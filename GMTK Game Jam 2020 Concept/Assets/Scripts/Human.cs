@@ -25,27 +25,62 @@ public class Human : MonoBehaviour {
         }
     }
 
-    
-
     private float infectionTimer = 5f;
 
 
-    // Start is called before the first frame update
+    
     void Start() {
 
     }
 
+
+    /* COLLISIONS */
+
     private void OnCollisionEnter2D(Collision2D collision) {
         Human otherHuman = collision.gameObject.GetComponent<Human>();
         if (otherHuman != null) {
-            if (otherHuman.status == HumanStatus.Healthy) {
-                otherHuman.Status = HumanStatus.Infected;
+            switch (otherHuman.status) {
+                case HumanStatus.Healthy:
+                    switch (this.Status) {
+                        case HumanStatus.Infectious:
+                            CollisionInfectiousHealthy(this, otherHuman);
+                            break;
+                    }
+                    break;
+                case HumanStatus.Doctor:
+                    switch (this.Status) {
+                        case HumanStatus.Infectious:
+                            // TODO: What should happen if an infectious touches a doctor?
+                            CollisionInfectiousDoctor(this, otherHuman);
+                            break;
+                    }
+                    break;
             }
         }
-        
+        EnvironmentObject environmentObject = collision.gameObject.GetComponent<EnvironmentObject>();
+        if (environmentObject != null) {
+            switch (environmentObject.type) {
+                case EnvironmentType.Water:
+                    CollisionHumanWater(this, environmentObject);
+                    break;
+            }
+        }
     }
 
-    
+
+    private void CollisionInfectiousHealthy(Human infectious, Human healthy) {
+        infectious.Status = HumanStatus.Infected;
+    }
+
+    private void CollisionInfectiousDoctor(Human infectious, Human doctor) {
+        infectious.Status = HumanStatus.Imune;
+    }
+
+    private void CollisionHumanWater(Human human, EnvironmentObject water) {
+        human.Die();
+    }
+
+
     void Update() {
         HandleMovementInput();
         if (status == HumanStatus.Infected) {
@@ -86,5 +121,10 @@ public class Human : MonoBehaviour {
             default:
                 break;
         }
+    }
+
+
+    private void Die() {
+        GameObject.Destroy(gameObject);
     }
 }
