@@ -69,7 +69,7 @@ public class Human : MonoBehaviour {
 
 
     private void CollisionInfectiousHealthy(Human infectious, Human healthy) {
-        infectious.Status = HumanStatus.Infected;
+        healthy.Status = HumanStatus.Infected;
     }
 
     private void CollisionInfectiousDoctor(Human infectious, Human doctor) {
@@ -96,6 +96,9 @@ public class Human : MonoBehaviour {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
             movement.Normalize();
+        } else {
+            movement.x = 0;
+            movement.y = 0;
         }
     }
 
