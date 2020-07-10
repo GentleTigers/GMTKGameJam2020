@@ -50,8 +50,10 @@ public class Human : MonoBehaviour {
                 case HumanStatus.Doctor:
                     switch (this.Status) {
                         case HumanStatus.Infectious:
-                            // TODO: What should happen if an infectious touches a doctor?
                             CollisionInfectiousDoctor(this, otherHuman);
+                            break;
+                        case HumanStatus.Infected:
+                            CollisionInfectedDoctor(this, otherHuman);
                             break;
                     }
                     break;
@@ -70,6 +72,10 @@ public class Human : MonoBehaviour {
 
     private void CollisionInfectiousHealthy(Human infectious, Human healthy) {
         healthy.Status = HumanStatus.Infected;
+    }
+
+    private void CollisionInfectedDoctor(Human infected, Human doctor) {
+        infected.Status = HumanStatus.Imune;
     }
 
     private void CollisionInfectiousDoctor(Human infectious, Human doctor) {
@@ -120,6 +126,12 @@ public class Human : MonoBehaviour {
                 break;
             case HumanStatus.Infectious:
                 spriteRenderer.sprite = Assets.instance.infectiousSprite;
+                break;
+            case HumanStatus.Doctor:
+                spriteRenderer.sprite = Assets.instance.doctorSprite;
+                break;
+            case HumanStatus.Imune:
+                spriteRenderer.sprite = Assets.instance.imuneSprite;
                 break;
             default:
                 break;

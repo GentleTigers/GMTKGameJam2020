@@ -9,6 +9,8 @@ public class Assets : MonoBehaviour {
     public Sprite healthySprite;
     public Sprite infectiousSprite;
     public Sprite infectedSprite;
+    public Sprite doctorSprite;
+    public Sprite imuneSprite;
 
 
     private void Awake() {
