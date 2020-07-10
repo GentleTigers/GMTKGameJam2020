@@ -6,30 +6,51 @@ using UnityEngine;
 public enum HumanStatus {
     Healthy,
     Infected,
-    Infectious,
     Imune,
     Doctor
+}
+
+public enum InfectionStage {
+    NotInfected,
+    NoSymptoms,
+    Infectious,
+    // TODO add more stages.
 }
 
 public class Human : MonoBehaviour {
 
 
     private float speed = 2.5f;
-
     private Vector3 movement;
 
     [SerializeField] private HumanStatus status = HumanStatus.Healthy;
-    public HumanStatus Status { get => status; set {
+    public HumanStatus Status {
+        get => status;
+        set {
             status = value;
+            if (status == HumanStatus.Infected) {
+                stage = InfectionStage.NoSymptoms;
+            } else {
+                stage = InfectionStage.NotInfected;
+            }
             SetCorrectSprite();
         }
     }
 
-    private float infectedToInfectiousTimer = 0;
-    private float infectedToInfectiousTotalTime = 5f;
+    [SerializeField] private InfectionStage stage = InfectionStage.NotInfected;
+    public InfectionStage Stage {
+        get => Status == HumanStatus.Infected ? stage : InfectionStage.NotInfected;
+        set {
+            stage = value;
+            SetCorrectSprite();
+        }
+    }
+    private static float degressionTotalTime = 10f;
+    private float degressionTimer = 0;
+
     private float imuneToHealthyTimer = 0;
-    private float imuneToHealthyTotalTime = 10f;
-    private bool ForeverImune { get { return imuneToHealthyTimer < 0; } }
+    private static float imuneToHealthyTotalTime = 10f;
+    private bool ForeverImune { get { return imuneToHealthyTotalTime < 0; } }
 
 
     
@@ -45,20 +66,13 @@ public class Human : MonoBehaviour {
         if (otherHuman != null) {
             switch (otherHuman.status) {
                 case HumanStatus.Healthy:
-                    switch (this.Status) {
-                        case HumanStatus.Infectious:
-                            CollisionInfectiousHealthy(this, otherHuman);
-                            break;
+                    if (this.Stage >= InfectionStage.Infectious) {
+                        CollisionInfectiousHealthy(this, otherHuman);
                     }
                     break;
                 case HumanStatus.Doctor:
-                    switch (this.Status) {
-                        case HumanStatus.Infectious:
-                            CollisionInfectiousDoctor(this, otherHuman);
-                            break;
-                        case HumanStatus.Infected:
-                            CollisionInfectedDoctor(this, otherHuman);
-                            break;
+                    if (this.Stage >= InfectionStage.NoSymptoms) {
+                        CollisionInfectedDoctor(this, otherHuman);
                     }
                     break;
             }
@@ -82,10 +96,6 @@ public class Human : MonoBehaviour {
         infected.Status = HumanStatus.Imune;
     }
 
-    private void CollisionInfectiousDoctor(Human infectious, Human doctor) {
-        infectious.Status = HumanStatus.Imune;
-    }
-
     private void CollisionHumanWater(Human human, EnvironmentObject water) {
         human.Die();
     }
@@ -93,17 +103,20 @@ public class Human : MonoBehaviour {
 
     void Update() {
         HandleMovementInput();
+
         switch (status) {
             case HumanStatus.Infected:
-                infectedToInfectiousTimer += Time.deltaTime;
-                if (infectedToInfectiousTimer >= infectedToInfectiousTotalTime) {
-                    Status = HumanStatus.Infectious;
+                degressionTimer += Time.deltaTime;
+                if (degressionTimer >= degressionTotalTime) {
+                    AddInfectionStage();
+                    degressionTimer = 0;
                 }
                 break;
             case HumanStatus.Imune:
                 imuneToHealthyTimer += Time.deltaTime;
                 if (imuneToHealthyTimer >= imuneToHealthyTotalTime) {
                     Status = HumanStatus.Healthy;
+                    imuneToHealthyTimer = 0;
                 }
                 break;
         }
@@ -111,7 +124,7 @@ public class Human : MonoBehaviour {
     }
 
     private void HandleMovementInput() {
-        if (status == HumanStatus.Infectious) {
+        if (Stage >= InfectionStage.Infectious) {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
             movement.Normalize();
@@ -135,10 +148,14 @@ public class Human : MonoBehaviour {
                 spriteRenderer.sprite = Assets.instance.healthySprite;
                 break;
             case HumanStatus.Infected:
-                spriteRenderer.sprite = Assets.instance.infectedSprite;
-                break;
-            case HumanStatus.Infectious:
-                spriteRenderer.sprite = Assets.instance.infectiousSprite;
+                switch (Stage) { // TODO: change color for each stage.
+                    case InfectionStage.NoSymptoms:
+                        spriteRenderer.sprite = Assets.instance.infectedSprite;
+                        break;
+                    case InfectionStage.Infectious:
+                        spriteRenderer.sprite = Assets.instance.infectiousSprite;
+                        break;
+                }
                 break;
             case HumanStatus.Doctor:
                 spriteRenderer.sprite = Assets.instance.doctorSprite;
@@ -151,7 +168,17 @@ public class Human : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Adds one level of infection.
+    /// </summary>
+    public void AddInfectionStage() {
+        Debug.Log("AddInfectionStage");
+        Stage += 1;
+    }
 
+    /// <summary>
+    /// Destroys the game object.
+    /// </summary>
     private void Die() {
         GameObject.Destroy(gameObject);
     }
