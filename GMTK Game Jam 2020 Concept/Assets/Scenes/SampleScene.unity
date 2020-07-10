@@ -236,6 +236,8 @@ MonoBehaviour:
   healthySprite: {fileID: 21300000, guid: 2227c9873a40e49fc93b82f8165f7dba, type: 3}
   infectiousSprite: {fileID: 21300000, guid: 9edac7b151fd34f608357f72dcc2fa8f, type: 3}
   infectedSprite: {fileID: 21300000, guid: 80e720a0e909d4cd087140da836a1902, type: 3}
+  doctorSprite: {fileID: 21300000, guid: c6713379fd7de4eeb8cf5a84ba089710, type: 3}
+  imuneSprite: {fileID: 21300000, guid: 7ffe87083fffa44f2a0f4ab684c0e622, type: 3}
 --- !u!4 &584934262
 Transform:
   m_ObjectHideFlags: 0

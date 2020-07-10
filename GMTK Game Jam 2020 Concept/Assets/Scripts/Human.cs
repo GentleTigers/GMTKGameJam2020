@@ -25,7 +25,11 @@ public class Human : MonoBehaviour {
         }
     }
 
-    private float infectionTimer = 5f;
+    private float infectedToInfectiousTimer = 0;
+    private float infectedToInfectiousTotalTime = 5f;
+    private float imuneToHealthyTimer = 0;
+    private float imuneToHealthyTotalTime = 10f;
+    private bool ForeverImune { get { return imuneToHealthyTimer < 0; } }
 
 
     
@@ -89,12 +93,21 @@ public class Human : MonoBehaviour {
 
     void Update() {
         HandleMovementInput();
-        if (status == HumanStatus.Infected) {
-            infectionTimer -= Time.deltaTime;
-            if (infectionTimer <= 0) {
-                Status = HumanStatus.Infectious;
-            }
+        switch (status) {
+            case HumanStatus.Infected:
+                infectedToInfectiousTimer += Time.deltaTime;
+                if (infectedToInfectiousTimer >= infectedToInfectiousTotalTime) {
+                    Status = HumanStatus.Infectious;
+                }
+                break;
+            case HumanStatus.Imune:
+                imuneToHealthyTimer += Time.deltaTime;
+                if (imuneToHealthyTimer >= imuneToHealthyTotalTime) {
+                    Status = HumanStatus.Healthy;
+                }
+                break;
         }
+        
     }
 
     private void HandleMovementInput() {
