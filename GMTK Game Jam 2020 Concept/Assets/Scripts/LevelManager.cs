@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,4 @@ public class Level : MonoBehaviour
     {
         
     }
-
-
-
 }

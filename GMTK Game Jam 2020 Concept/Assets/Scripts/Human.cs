@@ -77,14 +77,18 @@ public class Human : MonoBehaviour {
                     break;
             }
         }
-        EnvironmentObject environmentObject = collision.gameObject.GetComponent<EnvironmentObject>();
+        if (collision.gameObject.CompareTag("Level")) {
+            CollisionHumanLevel(this, collision.gameObject.GetComponent<Level>());
+        }
+        /*EnvironmentObject environmentObject = collision.gameObject.GetComponent<EnvironmentObject>();
         if (environmentObject != null) {
             switch (environmentObject.type) {
                 case EnvironmentType.Water:
                     CollisionHumanWater(this, environmentObject);
                     break;
             }
-        }
+        }*/
+
     }
 
 
@@ -96,7 +100,7 @@ public class Human : MonoBehaviour {
         infected.Status = HumanStatus.Imune;
     }
 
-    private void CollisionHumanWater(Human human, EnvironmentObject water) {
+    private void CollisionHumanLevel(Human human, Level water) {
         human.Die();
     }
 

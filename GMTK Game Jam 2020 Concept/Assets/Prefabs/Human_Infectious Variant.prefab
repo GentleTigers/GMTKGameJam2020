@@ -29,7 +29,7 @@ PrefabInstance:
     - target: {fileID: 6804578290610032656, guid: c3ebb0d70b2be444394d98977c3de167,
         type: 3}
       propertyPath: m_Name
-      value: Infectious_Human Variant
+      value: Human_Infectious Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6804578290610032668, guid: c3ebb0d70b2be444394d98977c3de167,
         type: 3}
@@ -86,6 +86,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6804578290610032669, guid: c3ebb0d70b2be444394d98977c3de167,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6786383669853334006, guid: 0a81a8e47033946a293465bdef6d287d,
+        type: 3}
     - target: {fileID: 6804578290610032671, guid: c3ebb0d70b2be444394d98977c3de167,
         type: 3}
       propertyPath: animator
