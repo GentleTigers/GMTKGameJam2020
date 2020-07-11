@@ -7,7 +7,8 @@ public enum HumanStatus {
     Healthy  = 0,
     Infected = 1,
     Imune    = 2,
-    Doctor   = 3
+    Doctor   = 3,
+    Dead     = 4
 }
 
 public enum InfectionStage {
@@ -15,6 +16,26 @@ public enum InfectionStage {
     NoSymptoms  = 1,
     Infectious  = 2,
     // TODO add more stages.
+}
+
+public class StatusChangedEventArgs : EventArgs {
+    public HumanStatus NewStatus { get; }
+    public HumanStatus OldStatus { get; }
+
+    public StatusChangedEventArgs(HumanStatus oldStatus, HumanStatus newStatus) {
+        OldStatus = oldStatus;
+        NewStatus = newStatus;
+    }
+}
+
+public class StageChangedEventArgs : EventArgs {
+    public InfectionStage OldStage { get; }
+    public InfectionStage NewStage { get; }
+
+    public StageChangedEventArgs(InfectionStage oldStage, InfectionStage newStage) {
+        OldStage = oldStage;
+        NewStage = newStage;
+    }
 }
 
 public class Human : MonoBehaviour {
@@ -28,13 +49,15 @@ public class Human : MonoBehaviour {
     public HumanStatus Status {
         get => status;
         set {
+            HumanStatus oldStatus = status;
             status = value;
             if (status == HumanStatus.Infected) {
                 stage = InfectionStage.NoSymptoms;
             } else {
                 stage = InfectionStage.NotInfected;
             }
-            SetCorrectAnimation();
+            OnStatusChanged(oldStatus, value);
+
         }
     }
 
@@ -42,8 +65,9 @@ public class Human : MonoBehaviour {
     public InfectionStage Stage {
         get => Status == HumanStatus.Infected ? stage : InfectionStage.NotInfected;
         set {
+            InfectionStage oldStage = stage;
             stage = value;
-            SetCorrectAnimation();
+            OnStageChanged(oldStage, value);
         }
     }
     private static float degressionTotalTime = 3f;
@@ -53,11 +77,26 @@ public class Human : MonoBehaviour {
     private static float imuneToHealthyTotalTime = 5f;
 
 
+    /* EVENTS */
 
-    void Start() {
-        SetCorrectAnimation();
+    public event EventHandler<StatusChangedEventArgs> StatusChanged;
+    public event EventHandler<StageChangedEventArgs> StageChanged;
+
+    protected virtual void OnStatusChanged(HumanStatus oldStatus, HumanStatus newStatus) {
+        StatusChanged?.Invoke(this, new StatusChangedEventArgs(oldStatus, newStatus));
     }
 
+    protected virtual void OnStageChanged(InfectionStage oldStage, InfectionStage newStage) {
+        StageChanged?.Invoke(this, new StageChangedEventArgs(oldStage, newStage));
+    }
+
+
+
+    void Start() {
+        SetCorrectAnimation(this, EventArgs.Empty);
+        StatusChanged += SetCorrectAnimation;
+        StageChanged += SetCorrectAnimation;
+    }
 
     /* COLLISIONS */
 
@@ -105,7 +144,7 @@ public class Human : MonoBehaviour {
     }
 
 
-    /* UPDATE */
+    /* UPDATE (Movement and Status) */
 
     void Update() {
         HandleMovementInput();
@@ -148,11 +187,12 @@ public class Human : MonoBehaviour {
     private void HandleMovement() {
         transform.position += movement * speed * Time.fixedDeltaTime;
         transform.rotation = Quaternion.Euler(movement);
+        
         // TODO rotation
         animator.SetFloat("Speed", movement.magnitude);
     }
 
-    private void SetCorrectAnimation() {
+    private void SetCorrectAnimation(object sender, EventArgs e) {
         animator.SetInteger("InfectionStatus", (int)Status);
         animator.SetInteger("InfectionStage", (int)Stage);
 
@@ -194,6 +234,8 @@ public class Human : MonoBehaviour {
     /// Destroys the game object.
     /// </summary>
     private void Die() {
-        GameObject.Destroy(gameObject);
+        gameObject.SetActive(false);
+        Status = HumanStatus.Dead;
     }
 }
+

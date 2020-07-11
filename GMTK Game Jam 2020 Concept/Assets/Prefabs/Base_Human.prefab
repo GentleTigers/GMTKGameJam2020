@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6804578290610032671}
   - component: {fileID: 6804578290610032666}
   - component: {fileID: 4513729358707129067}
+  - component: {fileID: -8704176382257004679}
   m_Layer: 0
   m_Name: Base_Human
   m_TagString: Untagged
@@ -97,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ca81ba69b6a74338a194dca001866e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: -8704176382257004679}
   status: 0
   stage: 0
 --- !u!50 &6804578290610032666
@@ -179,3 +180,22 @@ PolygonCollider2D:
       - {x: 0.193122, y: -0.12407279}
       - {x: 0.29, y: -0.07}
       - {x: 0.32999998, y: -0.04}
+--- !u!95 &-8704176382257004679
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6804578290610032656}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bf18eb0eb0892489aa335a0b04a99f8c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
