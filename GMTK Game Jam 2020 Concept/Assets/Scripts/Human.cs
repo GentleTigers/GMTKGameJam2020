@@ -143,6 +143,7 @@ public class Human : MonoBehaviour {
 
     private void HandleMovement() {
         transform.position += movement * speed * Time.fixedDeltaTime;
+        transform.rotation = Quaternion.Euler(movement);
         // TODO rotation
         animator.SetFloat("Speed", movement.magnitude);
     }
@@ -180,7 +181,6 @@ public class Human : MonoBehaviour {
     /// Adds one level of infection.
     /// </summary>
     public void AddInfectionStage() {
-        Debug.Log("AddInfectionStage"); 
         if (Stage < InfectionStage.Infectious) { // TODO: if more stages add, put last stage here
             Stage += 1;
         }

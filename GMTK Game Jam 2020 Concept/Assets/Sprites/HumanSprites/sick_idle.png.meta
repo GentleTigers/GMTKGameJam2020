@@ -1,46 +1,46 @@
 fileFormatVersion: 2
-guid: dc9743b589ec9f17d84c30636788c0e1
+guid: 0a81a8e47033946a293465bdef6d287d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4874867074050745746
-    second: immune_walk_cycle_0
+      213: 2100313693966059395
+    second: sick_idle_0
   - first:
-      213: -6728558783141986812
-    second: immune_walk_cycle_1
+      213: -3097202934964054734
+    second: sick_idle_1
   - first:
-      213: -5618670859915545054
-    second: immune_walk_cycle_2
+      213: 8846588268024613194
+    second: sick_idle_2
   - first:
-      213: -4286925882570373824
-    second: immune_walk_cycle_3
+      213: 8502101577066842904
+    second: sick_idle_3
   - first:
-      213: -5212674625759320334
-    second: immune_walk_cycle_4
+      213: 8329299082655507449
+    second: sick_idle_4
   - first:
-      213: 5226071038222001092
-    second: immune_walk_cycle_5
+      213: -2385790601673100589
+    second: sick_idle_5
   - first:
-      213: 5922738027042636440
-    second: immune_walk_cycle_6
+      213: -7458549297238129562
+    second: sick_idle_6
   - first:
-      213: -5636117425044870394
-    second: immune_walk_cycle_7
+      213: 4246674740234203835
+    second: sick_idle_7
   - first:
-      213: 8724726171809348459
-    second: immune_walk_cycle_8
+      213: 6786383669853334006
+    second: sick_idle_8
   - first:
-      213: -3744278898140342773
-    second: immune_walk_cycle_9
+      213: -403996797368295954
+    second: sick_idle_9
   - first:
-      213: -2811007961535139366
-    second: immune_walk_cycle_10
+      213: 8783485025429800180
+    second: sick_idle_10
   - first:
-      213: -6194049900609481791
-    second: immune_walk_cycle_11
+      213: -1903026327936054809
+    second: sick_idle_11
   - first:
-      213: -5571092072932483606
-    second: immune_walk_cycle_12
+      213: 7842949026649802915
+    second: sick_idle_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -84,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,47 +122,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: immune_walk_cycle_0
+      name: sick_idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -176,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 295ea0496c107a340800000000000000
-      internalID: 4874867074050745746
+      spriteID: 3874cbd3d20d52d10800000000000000
+      internalID: 2100313693966059395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: immune_walk_cycle_1
+      name: sick_idle_1
       rect:
         serializedVersion: 2
         x: 200
@@ -197,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40ebc78af6b5f92a0800000000000000
-      internalID: -6728558783141986812
+      spriteID: 2359b2027568405d0800000000000000
+      internalID: -3097202934964054734
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: immune_walk_cycle_2
+      name: sick_idle_2
       rect:
         serializedVersion: 2
         x: 400
@@ -218,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22635e43f987602b0800000000000000
-      internalID: -5618670859915545054
+      spriteID: a49ceb5982565ca70800000000000000
+      internalID: 8846588268024613194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: immune_walk_cycle_3
+      name: sick_idle_3
       rect:
         serializedVersion: 2
         x: 600
@@ -239,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04507f67f97c184c0800000000000000
-      internalID: -4286925882570373824
+      spriteID: 81b8b5996588df570800000000000000
+      internalID: 8502101577066842904
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: immune_walk_cycle_4
+      name: sick_idle_4
       rect:
         serializedVersion: 2
         x: 800
@@ -260,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f66ce9bb0cd8a7b0800000000000000
-      internalID: -5212674625759320334
+      spriteID: 9f32ba9926d979370800000000000000
+      internalID: 8329299082655507449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: immune_walk_cycle_5
+      name: sick_idle_5
       rect:
         serializedVersion: 2
         x: 1000
@@ -281,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c3ed2c9bebb68840800000000000000
-      internalID: 5226071038222001092
+      spriteID: 3d23fc69618f3eed0800000000000000
+      internalID: -2385790601673100589
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: immune_walk_cycle_6
+      name: sick_idle_6
       rect:
         serializedVersion: 2
         x: 1200
@@ -302,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89203970bdac13250800000000000000
-      internalID: 5922738027042636440
+      spriteID: 664c1666ee8ed7890800000000000000
+      internalID: -7458549297238129562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: immune_walk_cycle_7
+      name: sick_idle_7
       rect:
         serializedVersion: 2
         x: 1400
@@ -323,14 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60bafc7301d78c1b0800000000000000
-      internalID: -5636117425044870394
+      spriteID: bb2b8482d283fea30800000000000000
+      internalID: 4246674740234203835
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: immune_walk_cycle_8
+      name: sick_idle_8
       rect:
         serializedVersion: 2
         x: 0
@@ -344,14 +308,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6bff394a34741970800000000000000
-      internalID: 8724726171809348459
+      spriteID: 6f9ae1fedf31e2e50800000000000000
+      internalID: 6786383669853334006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: immune_walk_cycle_9
+      name: sick_idle_9
       rect:
         serializedVersion: 2
         x: 200
@@ -365,14 +329,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b069a502e26a90cc0800000000000000
-      internalID: -3744278898140342773
+      spriteID: eed9772ad07b46af0800000000000000
+      internalID: -403996797368295954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: immune_walk_cycle_10
+      name: sick_idle_10
       rect:
         serializedVersion: 2
         x: 400
@@ -386,14 +350,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad137eff62b4df8d0800000000000000
-      internalID: -2811007961535139366
+      spriteID: 4f4c4bef71535e970800000000000000
+      internalID: 8783485025429800180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: immune_walk_cycle_11
+      name: sick_idle_11
       rect:
         serializedVersion: 2
         x: 600
@@ -407,14 +371,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c3d021de605a0aa0800000000000000
-      internalID: -6194049900609481791
+      spriteID: 7e9c72d23a71795e0800000000000000
+      internalID: -1903026327936054809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: immune_walk_cycle_12
+      name: sick_idle_12
       rect:
         serializedVersion: 2
         x: 800
@@ -428,8 +392,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aed5dddc6418fa2b0800000000000000
-      internalID: -5571092072932483606
+      spriteID: 3a805f40690c7dc60800000000000000
+      internalID: 7842949026649802915
       vertices: []
       indices: 
       edges: []
