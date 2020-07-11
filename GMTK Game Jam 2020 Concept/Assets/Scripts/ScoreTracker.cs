@@ -114,9 +114,10 @@ public class ScoreTracker : MonoBehaviour {
         } else {
             DontDestroyOnLoad(this.gameObject);
             Instance = this;
+            HUD.gameObject.SetActive(false);
         }
 
-        
+
     }
 
     void Start() {
