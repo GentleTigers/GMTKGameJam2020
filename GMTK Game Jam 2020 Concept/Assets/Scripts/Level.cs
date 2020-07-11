@@ -6,12 +6,14 @@ using UnityEngine;
 public class Level : MonoBehaviour {
 
 
-    [SerializeField] private float degressionTotalTime = 3f;
+    [SerializeField] private float degressionTotalTime = 1f;
     [SerializeField] private float imuneToHealthyTotalTime = 5f;
     public float DegressionTotalTime { get => degressionTotalTime; set => degressionTotalTime = value; }
     public float ImuneToHealthyTotalTime { get => imuneToHealthyTotalTime; set => imuneToHealthyTotalTime = value; }
 
     public List<GameObject> humanGOsInThisLevel;
+
+    [SerializeField] private int numberOfInfectedNeededForWin;
 
 
     // Start is called before the first frame update
@@ -41,21 +43,31 @@ public class Level : MonoBehaviour {
     }
 
     private bool CheckForLevelWin() {
+        int infected = 0;
         foreach (var human in GetHumenInThisLevel()) {
-            if (human.Status != HumanStatus.Infected) {
-                return false;
+            if (human.Status == HumanStatus.Infected) {
+                infected++;
             }
         }
-        return true;
+        return infected >= numberOfInfectedNeededForWin;
     }
 
     private bool CheckForGameOver() {
+        bool atLeastOneInfectedLeft = false;
+        bool enoughNotDeadHumans = false;
+
+        int notDeadHumans = 0;
         foreach (var human in GetHumenInThisLevel()) {
             if (human.Status == HumanStatus.Infected) {
-                return false;
+                atLeastOneInfectedLeft = true;
+            }
+            if (human.Status != HumanStatus.Dead) {
+                notDeadHumans++;
             }
         }
-        return true;
+        enoughNotDeadHumans = notDeadHumans >= numberOfInfectedNeededForWin;
+
+        return !(enoughNotDeadHumans && atLeastOneInfectedLeft);
     }
 
 
