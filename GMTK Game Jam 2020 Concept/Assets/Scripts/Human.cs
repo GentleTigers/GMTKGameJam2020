@@ -47,7 +47,8 @@ public class Human : MonoBehaviour {
     private Vector3 movement;
     private Vector3 lastMovement = new Vector3();
     [SerializeField] Vector2Int startDirection;
-    public Animator animator;
+    [SerializeField] private Animator animator;
+    public Animator Animator { get => animator != null ? animator : gameObject.GetComponent<Animator>(); set => animator = value; }
 
     [SerializeField] private HumanStatus status = HumanStatus.Healthy;
     public HumanStatus Status {
@@ -79,7 +80,8 @@ public class Human : MonoBehaviour {
     private float degressionTimer = 0;
     private float imuneToHealthyTimer = 0;
 
-    public Level CorrespondingLevel { get { return gameObject.GetComponentInParent<Level>(); } }
+    public World CorrespondingLevel { get { return gameObject.GetComponentInParent<World>(); } }
+
 
     /* EVENTS */
 
@@ -121,8 +123,8 @@ public class Human : MonoBehaviour {
                     break;
             }
         }
-        if (collision.gameObject.CompareTag("Level")) {
-            CollisionHumanLevel(this, collision.gameObject.GetComponent<Level>());
+        if (collision.gameObject.CompareTag("World")) {
+            CollisionHumanLevel(this, collision.gameObject.GetComponent<World>());
         }
         /*EnvironmentObject environmentObject = collision.gameObject.GetComponent<EnvironmentObject>();
         if (environmentObject != null) {
@@ -144,7 +146,7 @@ public class Human : MonoBehaviour {
         infected.Status = HumanStatus.Imune;
     }
 
-    private void CollisionHumanLevel(Human human, Level water) {
+    private void CollisionHumanLevel(Human human, World water) {
         human.Die();
     }
 
@@ -198,12 +200,12 @@ public class Human : MonoBehaviour {
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg - 90);
             lastMovement = new Vector3(movement.x, movement.y);
         }
-        animator.SetFloat("Speed", movement.magnitude);
+        Animator.SetFloat("Speed", movement.magnitude);
     }
 
     private void SetCorrectAnimation(object sender, EventArgs e) {
-        animator.SetInteger("InfectionStatus", (int)Status);
-        animator.SetInteger("InfectionStage", (int)Stage);
+        Animator.SetInteger("InfectionStatus", (int)Status);
+        Animator.SetInteger("InfectionStage", (int)Stage);
 
         /*switch (status) {
             

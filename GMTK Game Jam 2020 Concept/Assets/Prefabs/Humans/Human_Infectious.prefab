@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6804578290610032656, guid: c3ebb0d70b2be444394d98977c3de167,
         type: 3}
       propertyPath: m_Name
-      value: Human_Infectious Variant
+      value: Human_Infectious
       objectReference: {fileID: 0}
     - target: {fileID: 6804578290610032668, guid: c3ebb0d70b2be444394d98977c3de167,
         type: 3}
@@ -77,7 +77,7 @@ PrefabInstance:
         type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6993199102247185214}
     - target: {fileID: 6804578290610032671, guid: c3ebb0d70b2be444394d98977c3de167,
         type: 3}
       propertyPath: status
@@ -90,3 +90,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3ebb0d70b2be444394d98977c3de167, type: 3}
+--- !u!95 &6993199102247185214 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -8704176382257004679, guid: c3ebb0d70b2be444394d98977c3de167,
+    type: 3}
+  m_PrefabInstance: {fileID: 7365734198243480647}
+  m_PrefabAsset: {fileID: 0}
