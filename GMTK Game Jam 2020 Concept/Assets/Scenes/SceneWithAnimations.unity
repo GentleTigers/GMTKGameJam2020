@@ -586,6 +586,16 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1332543103}
+    - target: {fileID: 4736950481114475575, guid: 135e3a376f98040789fb7bdff82ef2b2,
+        type: 3}
+      propertyPath: startDirection.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4736950481114475575, guid: 135e3a376f98040789fb7bdff82ef2b2,
+        type: 3}
+      propertyPath: startDirection.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4736950481114475576, guid: 135e3a376f98040789fb7bdff82ef2b2,
         type: 3}
       propertyPath: m_Name
@@ -610,6 +620,11 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 2014642877}
+    - target: {fileID: 4059695848435123288, guid: 46c42c58070174e66b0cda278fbabfa0,
+        type: 3}
+      propertyPath: startDirection.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4059695848435123291, guid: 46c42c58070174e66b0cda278fbabfa0,
         type: 3}
       propertyPath: m_LocalPosition.x

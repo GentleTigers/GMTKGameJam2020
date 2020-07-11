@@ -44,6 +44,7 @@ public class Human : MonoBehaviour {
     private float speed = 2.5f;
     private Vector3 movement;
     private Vector3 lastMovement = new Vector3();
+    [SerializeField] Vector2Int startDirection;
     public Animator animator;
 
     [SerializeField] private HumanStatus status = HumanStatus.Healthy;
@@ -68,6 +69,7 @@ public class Human : MonoBehaviour {
         set {
             InfectionStage oldStage = stage;
             stage = value;
+            degressionTimer = 0;
             OnStageChanged(oldStage, value);
         }
     }
@@ -94,6 +96,7 @@ public class Human : MonoBehaviour {
 
 
     void Start() {
+        lastMovement = new Vector3(startDirection.x, startDirection.y);
         SetCorrectAnimation(this, EventArgs.Empty);
         StatusChanged += SetCorrectAnimation;
         StageChanged += SetCorrectAnimation;
