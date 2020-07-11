@@ -298,7 +298,7 @@ MonoBehaviour:
   - {fileID: 1332543102}
   - {fileID: 741323938}
   - {fileID: 607587221}
-  numberOfInfectedNeededForWin: 0
+  numberOfInfectedNeededForWin: 3
 --- !u!1 &1228583513
 GameObject:
   m_ObjectHideFlags: 0
