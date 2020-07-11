@@ -43,6 +43,7 @@ public class Human : MonoBehaviour {
 
     private float speed = 2.5f;
     private Vector3 movement;
+    private Vector3 lastMovement = new Vector3();
     public Animator animator;
 
     [SerializeField] private HumanStatus status = HumanStatus.Healthy;
@@ -185,10 +186,14 @@ public class Human : MonoBehaviour {
     }
 
     private void HandleMovement() {
-        transform.position += movement * speed * Time.fixedDeltaTime;
-        transform.rotation = Quaternion.Euler(movement);
-        
-        // TODO rotation
+        bool idle = movement.x == 0 && movement.y == 0;
+        if (idle) {
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(lastMovement.y, lastMovement.x) * Mathf.Rad2Deg - 90);
+        } else {
+            transform.position += movement * speed * Time.fixedDeltaTime;
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg - 90);
+            lastMovement = new Vector3(movement.x, movement.y);
+        }
         animator.SetFloat("Speed", movement.magnitude);
     }
 
