@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6804578290610032656, guid: c3ebb0d70b2be444394d98977c3de167,
         type: 3}
       propertyPath: m_Name
-      value: Human_Healthy Variant
+      value: Human_Healthy
       objectReference: {fileID: 0}
     - target: {fileID: 6804578290610032668, guid: c3ebb0d70b2be444394d98977c3de167,
         type: 3}
@@ -77,6 +77,22 @@ PrefabInstance:
         type: 3}
       propertyPath: animator
       value: 
+      objectReference: {fileID: 1794470082079687505}
+    - target: {fileID: 6804578290610032671, guid: c3ebb0d70b2be444394d98977c3de167,
+        type: 3}
+      propertyPath: startDirection.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804578290610032671, guid: c3ebb0d70b2be444394d98977c3de167,
+        type: 3}
+      propertyPath: startDirection.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3ebb0d70b2be444394d98977c3de167, type: 3}
+--- !u!95 &1794470082079687505 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -8704176382257004679, guid: c3ebb0d70b2be444394d98977c3de167,
+    type: 3}
+  m_PrefabInstance: {fileID: 2293370949435980840}
+  m_PrefabAsset: {fileID: 0}

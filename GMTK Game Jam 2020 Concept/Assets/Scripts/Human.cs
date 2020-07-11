@@ -38,8 +38,10 @@ public class StageChangedEventArgs : EventArgs {
     }
 }
 
-public class Human : MonoBehaviour {
 
+
+
+public class Human : MonoBehaviour {
 
     private float speed = 2.5f;
     private Vector3 movement;
@@ -73,12 +75,11 @@ public class Human : MonoBehaviour {
             OnStageChanged(oldStage, value);
         }
     }
-    private static float degressionTotalTime = 3f;
+    
     private float degressionTimer = 0;
-
     private float imuneToHealthyTimer = 0;
-    private static float imuneToHealthyTotalTime = 5f;
 
+    public Level CorrespondingLevel { get { return gameObject.GetComponentInParent<Level>(); } }
 
     /* EVENTS */
 
@@ -156,14 +157,14 @@ public class Human : MonoBehaviour {
         switch (status) {
             case HumanStatus.Infected:
                 degressionTimer += Time.deltaTime;
-                if (degressionTimer >= degressionTotalTime) {
+                if (degressionTimer >= CorrespondingLevel.DegressionTotalTime) {
                     AddInfectionStage();
                     degressionTimer = 0;
                 }
                 break;
             case HumanStatus.Imune:
                 imuneToHealthyTimer += Time.deltaTime;
-                if (imuneToHealthyTimer >= imuneToHealthyTotalTime) {
+                if (imuneToHealthyTimer >= CorrespondingLevel.ImuneToHealthyTotalTime) {
                     Status = HumanStatus.Healthy;
                     imuneToHealthyTimer = 0;
                 }
