@@ -97,7 +97,12 @@ public class World : MonoBehaviour {
     }
 
     private void LoadNextLevel() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        try {
+            Debug.Log(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        } catch (Exception ex) {
+            SceneManager.LoadScene(0);
+        }
     }
 
     public List<Human> GetHumenInThisLevel() {
