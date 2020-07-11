@@ -41,6 +41,9 @@ TextureImporter:
   - first:
       213: -5571092072932483606
     second: immune_walk_cycle_12
+  - first:
+      213: -2597819203046964731
+    second: immune_walk_cycle_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -430,6 +433,27 @@ TextureImporter:
       bones: []
       spriteID: aed5dddc6418fa2b0800000000000000
       internalID: -5571092072932483606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: immune_walk_cycle_13
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50282bbd231b2fbd0800000000000000
+      internalID: -2597819203046964731
       vertices: []
       indices: 
       edges: []

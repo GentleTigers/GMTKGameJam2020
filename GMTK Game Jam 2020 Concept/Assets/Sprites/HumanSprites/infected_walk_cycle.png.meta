@@ -41,6 +41,9 @@ TextureImporter:
   - first:
       213: 3960836354962529520
     second: infected_walk_cycle_12
+  - first:
+      213: 249234834483450177
+    second: infected_walk_cycle_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -430,6 +433,27 @@ TextureImporter:
       bones: []
       spriteID: 0fc9efeeda7b7f630800000000000000
       internalID: 3960836354962529520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: infected_walk_cycle_13
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1411a0fe2c5757300800000000000000
+      internalID: 249234834483450177
       vertices: []
       indices: 
       edges: []

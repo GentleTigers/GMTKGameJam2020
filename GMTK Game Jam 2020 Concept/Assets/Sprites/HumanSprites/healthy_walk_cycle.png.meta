@@ -41,6 +41,9 @@ TextureImporter:
   - first:
       213: -3810240967758002678
     second: healthy_walk_cycle_12
+  - first:
+      213: -8341956038506257902
+    second: healthy_walk_cycle_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -430,6 +433,27 @@ TextureImporter:
       bones: []
       spriteID: a06c420070e4f1bc0800000000000000
       internalID: -3810240967758002678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: healthy_walk_cycle_13
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 212e8e83e2b6b3c80800000000000000
+      internalID: -8341956038506257902
       vertices: []
       indices: 
       edges: []

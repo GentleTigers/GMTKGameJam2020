@@ -41,6 +41,9 @@ TextureImporter:
   - first:
       213: 7892700856103540495
     second: sick_walk_cycle_12
+  - first:
+      213: -2328321255020460576
+    second: sick_walk_cycle_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -430,6 +433,27 @@ TextureImporter:
       bones: []
       spriteID: f07197e7c91888d60800000000000000
       internalID: 7892700856103540495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sick_walk_cycle_13
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e5838f872420bfd0800000000000000
+      internalID: -2328321255020460576
       vertices: []
       indices: 
       edges: []
