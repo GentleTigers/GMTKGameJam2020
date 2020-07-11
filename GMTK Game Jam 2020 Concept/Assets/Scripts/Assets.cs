@@ -12,6 +12,11 @@ public class Assets : MonoBehaviour {
     public Sprite doctorSprite;
     public Sprite imuneSprite;
 
+    public RuntimeAnimatorController healthyAnimator;
+    public RuntimeAnimatorController infectiousAnimator;
+    public RuntimeAnimatorController infectedAnimator;
+    public RuntimeAnimatorController imuneAnimator;
+
 
     private void Awake() {
         instance = this;

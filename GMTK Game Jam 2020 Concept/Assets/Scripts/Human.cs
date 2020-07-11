@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum HumanStatus {
-    Healthy,
-    Infected,
-    Imune,
-    Doctor
+    Healthy  = 0,
+    Infected = 1,
+    Imune    = 2,
+    Doctor   = 3
 }
 
 public enum InfectionStage {
-    NotInfected,
-    NoSymptoms,
-    Infectious,
+    NotInfected = 0,
+    NoSymptoms  = 1,
+    Infectious  = 2,
     // TODO add more stages.
 }
 
@@ -22,6 +22,7 @@ public class Human : MonoBehaviour {
 
     private float speed = 2.5f;
     private Vector3 movement;
+    public Animator animator;
 
     [SerializeField] private HumanStatus status = HumanStatus.Healthy;
     public HumanStatus Status {
@@ -33,7 +34,7 @@ public class Human : MonoBehaviour {
             } else {
                 stage = InfectionStage.NotInfected;
             }
-            SetCorrectSprite();
+            SetCorrectAnimation();
         }
     }
 
@@ -42,20 +43,19 @@ public class Human : MonoBehaviour {
         get => Status == HumanStatus.Infected ? stage : InfectionStage.NotInfected;
         set {
             stage = value;
-            SetCorrectSprite();
+            SetCorrectAnimation();
         }
     }
-    private static float degressionTotalTime = 10f;
+    private static float degressionTotalTime = 3f;
     private float degressionTimer = 0;
 
     private float imuneToHealthyTimer = 0;
-    private static float imuneToHealthyTotalTime = 10f;
-    private bool ForeverImune { get { return imuneToHealthyTotalTime < 0; } }
+    private static float imuneToHealthyTotalTime = 5f;
 
 
-    
+
     void Start() {
-
+        SetCorrectAnimation();
     }
 
 
@@ -101,6 +101,8 @@ public class Human : MonoBehaviour {
     }
 
 
+    /* UPDATE */
+
     void Update() {
         HandleMovementInput();
 
@@ -135,45 +137,53 @@ public class Human : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        // TODO rotation
-        transform.position += movement * speed * Time.deltaTime;
+        HandleMovement();
+        
     }
 
-    private void SetCorrectSprite() {
-        SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        switch (status) {
+    private void HandleMovement() {
+        transform.position += movement * speed * Time.fixedDeltaTime;
+        // TODO rotation
+        animator.SetFloat("Speed", movement.magnitude);
+    }
+
+    private void SetCorrectAnimation() {
+        animator.SetInteger("InfectionStatus", (int)Status);
+        animator.SetInteger("InfectionStage", (int)Stage);
+
+        /*switch (status) {
             
-            // TODO set sprite
             case HumanStatus.Healthy:
-                spriteRenderer.sprite = Assets.instance.healthySprite;
+                animator.runtimeAnimatorController = Assets.instance.healthyAnimator;
                 break;
             case HumanStatus.Infected:
-                switch (Stage) { // TODO: change color for each stage.
+                switch (Stage) {
                     case InfectionStage.NoSymptoms:
-                        spriteRenderer.sprite = Assets.instance.infectedSprite;
+                        animator.runtimeAnimatorController = Assets.instance.infectedAnimator;
                         break;
                     case InfectionStage.Infectious:
-                        spriteRenderer.sprite = Assets.instance.infectiousSprite;
+                        animator.runtimeAnimatorController = Assets.instance.infectiousAnimator;
                         break;
                 }
                 break;
             case HumanStatus.Doctor:
-                spriteRenderer.sprite = Assets.instance.doctorSprite;
+                animator.runtimeAnimatorController = Assets.instance.healthyAnimator; // TODO
                 break;
             case HumanStatus.Imune:
-                spriteRenderer.sprite = Assets.instance.imuneSprite;
+                animator.runtimeAnimatorController = Assets.instance.imuneAnimator;
                 break;
-            default:
-                break;
-        }
+
+        }*/
     }
 
     /// <summary>
     /// Adds one level of infection.
     /// </summary>
     public void AddInfectionStage() {
-        Debug.Log("AddInfectionStage");
-        Stage += 1;
+        Debug.Log("AddInfectionStage"); 
+        if (Stage < InfectionStage.Infectious) { // TODO: if more stages add, put last stage here
+            Stage += 1;
+        }
     }
 
     /// <summary>
