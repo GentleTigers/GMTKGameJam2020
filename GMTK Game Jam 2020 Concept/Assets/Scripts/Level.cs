@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class Level : MonoBehaviour {
 
+
+    [SerializeField] private float degressionTotalTime = 3f;
+    [SerializeField] private float imuneToHealthyTotalTime = 5f;
+    public float DegressionTotalTime { get => degressionTotalTime; set => degressionTotalTime = value; }
+    public float ImuneToHealthyTotalTime { get => imuneToHealthyTotalTime; set => imuneToHealthyTotalTime = value; }
+
     public List<GameObject> humanGOsInThisLevel;
-    public GameObject levelManager;
-    public LevelManager LevelManager { get { return levelManager.GetComponent<LevelManager>(); } }
+
 
     // Start is called before the first frame update
     void Start() {
