@@ -16,4 +16,12 @@ public class MainMenu : MonoBehaviour {
         Application.Quit();
     }
 
+    private void Update() {
+        if (Input.GetButtonDown("Submit")) {
+            PlayGame();
+        } else if (Input.GetButtonDown("Cancel")) {
+            QuitGame();
+        }
+    }
+
 }

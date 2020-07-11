@@ -37,20 +37,6 @@ public class ScoreTracker : MonoBehaviour {
     }
 
 
-    /* HIGHSCORE */
-
-    [SerializeField] private Canvas highscoreScreen;
-    [SerializeField] private Text highscoreText;
-
-    public void ShowHighscore() {
-        highscoreText.text = "Your Score:\n" + ScoreTimer;
-        highscoreScreen.gameObject.SetActive(true);
-    }
-
-    public void HideHighscore() {
-        highscoreScreen.gameObject.SetActive(false);
-    }
-
 
     /* EVENTS */
 
@@ -70,13 +56,13 @@ public class ScoreTracker : MonoBehaviour {
         }
         if (newStatus != GameStatus.PLAYING) {
             HUD.gameObject.SetActive(false);
-        }
+        }/*
         if (newStatus == GameStatus.HIGHSCORE) {
             ShowHighscore();
         }
         if (newStatus != GameStatus.HIGHSCORE) {
             HideHighscore();
-        }
+        }*/
     }
 
     private void OnActiveSceneChanged(Scene arg0, Scene arg1) {
@@ -100,6 +86,7 @@ public class ScoreTracker : MonoBehaviour {
     [SerializeField] private Canvas HUD;
     [SerializeField] private Text timerText;
     public float ScoreTimer { get; private set; }
+    public string ScoreTimerAsText { get { return TimeSpan.FromSeconds(ScoreTimer).ToString(@"hh\:mm\:ss\:fff"); } }
     private bool timerIsRunning = false;
 
 
@@ -140,7 +127,7 @@ public class ScoreTracker : MonoBehaviour {
     void Update() {
         if (timerIsRunning) {
             ScoreTimer += Time.deltaTime;
-            timerText.text = "Time: " + ScoreTimer; // TODO: better formatting
+            timerText.text = "Time: " + ScoreTimerAsText; // TODO: better formatting
         }
     }
 
@@ -150,11 +137,12 @@ public class ScoreTracker : MonoBehaviour {
 
 
 public class GameStatusEventArgs {
-    GameStatus oldStatus;
-    GameStatus newStatus;
-
     public GameStatusEventArgs(GameStatus oldStatus, GameStatus newStatus) {
-        this.oldStatus = oldStatus;
-        this.newStatus = newStatus;
+        this.OldStatus = oldStatus;
+        this.NewStatus = newStatus;
     }
+
+    public GameStatus NewStatus { get; }
+
+    public GameStatus OldStatus { get; }
 }

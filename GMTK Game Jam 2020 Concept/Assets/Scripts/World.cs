@@ -59,7 +59,7 @@ public class World : MonoBehaviour {
 
     private void OnHumanChanged() {
         if (CheckForGameOver()) {
-            Debug.Log("GAME OVER");
+            ScoreTracker.Instance.GameStatus = GameStatus.GAMEOVER;
         } else if (CheckForLevelWin()) {
             LoadNextLevel();
             Debug.Log("LEVEL WON!");
@@ -95,6 +95,8 @@ public class World : MonoBehaviour {
 
         return !(enoughNotDeadHumans && atLeastOneInfectedLeft);
     }
+
+
 
     private void LoadNextLevel() {
         try {
