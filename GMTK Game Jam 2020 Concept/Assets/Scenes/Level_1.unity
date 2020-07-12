@@ -292,7 +292,12 @@ PrefabInstance:
     - target: {fileID: 4380429029849658194, guid: f4a0c73602adb422c8fecdde6289f20f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.1
+      value: 4.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380429029849658194, guid: f4a0c73602adb422c8fecdde6289f20f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8724535659929126334, guid: f4a0c73602adb422c8fecdde6289f20f,
         type: 3}
@@ -361,12 +366,17 @@ PrefabInstance:
     - target: {fileID: 6765827459711910073, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.45
+      value: 1.626
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910073, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765827459711910073, guid: faa229ea54ac747a7be39ec0df984a0d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 49.6507
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
@@ -375,10 +385,17 @@ PrefabInstance:
 
 
         your mission today is to infect every inhabitant
-        of the island and secure the future of our kind. Once you infected the human,
-        you can travel through their arterial network to get to their brain. From
-        there it will be easy for you to take over control of all their basic motor
-        functions.
+        of the island and secure the future of our kind.
+
+
+        To infect them,
+        you must simply come in contact with them.
+
+
+        Once you infected the
+        human, you can travel through their arterial network to get to their brain.
+        From there it will be easy for you to take over control of all their basic
+        motor functions.
 
 
         All the best
@@ -388,17 +405,17 @@ PrefabInstance:
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 315
+      value: 376
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 60
+      value: 73
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 10
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
@@ -408,7 +425,12 @@ PrefabInstance:
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 58
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: 363
       objectReference: {fileID: 0}
     - target: {fileID: 6765827460339063704, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
