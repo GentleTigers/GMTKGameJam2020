@@ -27,9 +27,12 @@ public class HighscoreScreenController : MonoBehaviour {
         highscoreText.text = "Your Time:\n" + CurrentScoreAsText;
 
         float savedScore = ScoreTracker.Instance.Higscore;
-        if (savedScore < 0 || savedScore > CurrentScore) {
+        if (savedScore < 0) {
             ScoreTracker.Instance.Higscore = CurrentScore;
-            totalHighscoreText.text = "NEW HIGHSCORE!\nPrevious Time: " + ScoreTracker.GetTimeInNiceFormat(savedScore);
+            totalHighscoreText.text = "NEW HIGHSCORE!";
+        } else if (savedScore > CurrentScore) {
+            totalHighscoreText.text = "NEW HIGHSCORE!\nPrevious Highscore: " + ScoreTracker.GetTimeInNiceFormat(savedScore);
+            ScoreTracker.Instance.Higscore = CurrentScore;
         } else {
             totalHighscoreText.text = "Best Time:\n" + ScoreTracker.GetTimeInNiceFormat(savedScore);
         }
