@@ -6,6 +6,7 @@ TagManager:
   tags:
   - World
   - ScoreTracker
+  - Level
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - TextOnGround
   - 
   - 
   - 
@@ -42,6 +43,9 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 3748798851
+    locked: 0
+  - name: TextOnGround
+    uniqueID: 31005627
     locked: 0
   - name: Default
     uniqueID: 0

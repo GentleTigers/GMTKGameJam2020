@@ -30,7 +30,7 @@ public class World : MonoBehaviour {
                 for (int i = 0; i < transform.childCount; i++) {
                     GameObject child = transform.GetChild(i).gameObject;
                     Human human = child.GetComponent<Human>();
-                    if (human.Status != HumanStatus.Doctor || human.Status != HumanStatus.Dead) {
+                    if (human != null && (human.Status != HumanStatus.Doctor || human.Status != HumanStatus.Dead)) {
                         humanGOsInThisLevel.Add(child);
                     }
                 }
