@@ -84,7 +84,7 @@ public class Human : MonoBehaviour {
     private float degressionTimer = 0;
     private float imuneToHealthyTimer = 0;
 
-    public World CorrespondingLevel { get { return gameObject.GetComponentInParent<World>(); } }
+    public World CorrespondingWorld { get { return gameObject.GetComponentInParent<World>(); } }
 
 
     /* EVENTS */
@@ -158,19 +158,22 @@ public class Human : MonoBehaviour {
     /* UPDATE (Movement and Status) */
 
     void Update() {
+        if (!CorrespondingWorld.StartedPlaying) {
+            return;
+        }
         HandleMovementInput();
 
         switch (status) {
             case HumanStatus.Infected:
                 degressionTimer += Time.deltaTime;
-                if (degressionTimer >= CorrespondingLevel.DegressionTotalTime) {
+                if (degressionTimer >= CorrespondingWorld.DegressionTotalTime) {
                     AddInfectionStage();
                     degressionTimer = 0;
                 }
                 break;
             case HumanStatus.Imune:
                 imuneToHealthyTimer += Time.deltaTime;
-                if (imuneToHealthyTimer >= CorrespondingLevel.ImuneToHealthyTotalTime) {
+                if (imuneToHealthyTimer >= CorrespondingWorld.ImuneToHealthyTotalTime) {
                     Status = HumanStatus.Healthy;
                     imuneToHealthyTimer = 0;
                 }

@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class World : MonoBehaviour {
 
+    [SerializeField]
+    private bool startedPlaying;
+    public bool StartedPlaying { get => startedPlaying; private set => startedPlaying = value; }
+    private bool firstFrame = true;
+
 
     [SerializeField] private float degressionTotalTime = 1f;
     [SerializeField] private float imuneToHealthyTotalTime = 5f;
@@ -19,6 +24,7 @@ public class World : MonoBehaviour {
     }
 
     private List<GameObject> humanGOsInThisLevel;
+
     public List<GameObject> HumanGOsInThisLevel {
         get {
             if (humanGOsInThisLevel == null) {
@@ -30,8 +36,8 @@ public class World : MonoBehaviour {
                         humanGOsInThisLevel.Add(child);
                     }
                 }
-                
-            } 
+
+            }
             return humanGOsInThisLevel;
         }
     }
@@ -45,11 +51,27 @@ public class World : MonoBehaviour {
             human.StatusChanged += OnStatusChanged;
             human.StageChanged += OnStageChanged;
         }
+
+        //Input.ResetInputAxes();
     }
 
     private void Update() {
+
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.I) && Input.GetKeyDown(KeyCode.N)) { // CHEATCODE
             DoLevelWin();
+        }
+        if (!StartedPlaying) {
+            if (!firstFrame && ScoreTracker.IsAnyMovingKeyDown()) {
+                StartedPlaying = true;
+                Debug.Log("StartedPlaying");
+            }
+        }
+        if (ScoreTracker.IsAnyMovingKeyDown()) {
+            Debug.Log("World: ButtonDown");
+        }
+        if (firstFrame) {
+            Debug.Log("FirstFrame");
+            firstFrame = false;
         }
     }
 

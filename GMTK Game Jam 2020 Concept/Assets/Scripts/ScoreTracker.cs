@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public enum GameStatus {
     MENU,
@@ -52,7 +53,6 @@ public class ScoreTracker : MonoBehaviour {
         }
         if (newStatus == GameStatus.PLAYING) {
             HUD.gameObject.SetActive(true);
-            StartTimer();
         }
         if (newStatus != GameStatus.PLAYING) {
             HUD.gameObject.SetActive(false);
@@ -78,15 +78,30 @@ public class ScoreTracker : MonoBehaviour {
         } else {
             Debug.Log("Scene index error: " + arg1.buildIndex);
         }
+
+        if (GameStatus == GameStatus.PLAYING) {
+            PauseTimer();
+        }
     }
 
 
     /* TIMER */
 
     [SerializeField] private Canvas HUD;
-    [SerializeField] private Text timerText;
+    [SerializeField] private TextMeshProUGUI timerText;
+
     public float ScoreTimer { get; private set; }
-    public string ScoreTimerAsText { get { return TimeSpan.FromSeconds(ScoreTimer).ToString(@"mm\:ss\:fff"); } }
+    public string ScoreTimerAsText {
+        get {
+            if (ScoreTimer >= 60) {
+                if (ScoreTimer >= 10 * 60) {
+                    return TimeSpan.FromSeconds(ScoreTimer).ToString(@"hh\:mm\:ss\:ff");
+                }
+                return TimeSpan.FromSeconds(ScoreTimer).ToString(@"m\:ss\:ff");
+            }
+            return TimeSpan.FromSeconds(ScoreTimer).ToString(@"ss\:ff");
+        }
+    }
     private bool timerIsRunning = false;
 
 
@@ -101,6 +116,18 @@ public class ScoreTracker : MonoBehaviour {
 
     public void PauseTimer() {
         timerIsRunning = false;
+    }
+
+
+    public static bool IsAnyMovingKeyDown() {
+        return Input.GetKeyDown(KeyCode.UpArrow) ||
+            Input.GetKeyDown(KeyCode.DownArrow) ||
+            Input.GetKeyDown(KeyCode.LeftArrow) ||
+            Input.GetKeyDown(KeyCode.RightArrow) ||
+            Input.GetKeyDown(KeyCode.W) ||
+            Input.GetKeyDown(KeyCode.A) ||
+            Input.GetKeyDown(KeyCode.S) ||
+            Input.GetKeyDown(KeyCode.D);
     }
 
 
@@ -128,7 +155,14 @@ public class ScoreTracker : MonoBehaviour {
     void Update() {
         if (timerIsRunning) {
             ScoreTimer += Time.deltaTime;
-            timerText.text = "Time: " + ScoreTimerAsText; // TODO: better formatting
+            timerText.text = "<mark=#a1a1a1aa>Time: " + ScoreTimerAsText + "</mark>"; // TODO: better formatting
+        } else {
+            if (GameStatus == GameStatus.PLAYING) {
+                if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical")) {
+                    Debug.Log("ScoreTracker: ButtonDown");
+                    StartTimer();
+                }
+            }
         }
     }
 
