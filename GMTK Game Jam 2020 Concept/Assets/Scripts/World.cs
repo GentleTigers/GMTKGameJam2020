@@ -6,10 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class World : MonoBehaviour {
 
-    [SerializeField]
-    private bool startedPlaying;
-    public bool StartedPlaying { get => startedPlaying; private set => startedPlaying = value; }
-    private bool firstFrame = true;
+    
+    public bool StartedPlaying { get; private set; }
 
 
     [SerializeField] private float degressionTotalTime = 1f;
@@ -56,23 +54,16 @@ public class World : MonoBehaviour {
     }
 
     private void Update() {
-
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.I) && Input.GetKeyDown(KeyCode.N)) { // CHEATCODE
             DoLevelWin();
         }
         if (!StartedPlaying) {
-            if (!firstFrame && ScoreTracker.IsAnyMovingKeyDown()) {
+            if (Time.timeSinceLevelLoad > ScoreTracker.Instance.DelayedStartPerLevel && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)) {
                 StartedPlaying = true;
                 Debug.Log("StartedPlaying");
             }
         }
-        if (ScoreTracker.IsAnyMovingKeyDown()) {
-            Debug.Log("World: ButtonDown");
-        }
-        if (firstFrame) {
-            Debug.Log("FirstFrame");
-            firstFrame = false;
-        }
+        
     }
 
 

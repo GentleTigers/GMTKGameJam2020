@@ -37,6 +37,8 @@ public class ScoreTracker : MonoBehaviour {
         }
     }
 
+    [SerializeField]
+    public float DelayedStartPerLevel { get; } = 0.5f;
 
 
     /* EVENTS */
@@ -158,7 +160,7 @@ public class ScoreTracker : MonoBehaviour {
             timerText.text = "<mark=#a1a1a1aa>Time: " + ScoreTimerAsText + "</mark>"; // TODO: better formatting
         } else {
             if (GameStatus == GameStatus.PLAYING) {
-                if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical")) {
+                if (Time.timeSinceLevelLoad > DelayedStartPerLevel && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)) {
                     Debug.Log("ScoreTracker: ButtonDown");
                     StartTimer();
                 }
