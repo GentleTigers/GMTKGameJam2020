@@ -164,6 +164,8 @@ public class ScoreTracker : MonoBehaviour {
                     Debug.Log("ScoreTracker: ButtonDown");
                     StartTimer();
                 }
+            } else if (GameStatus == GameStatus.MENU) {
+                timerText.text = "<mark=#a1a1a1aa>Time: 00:00</mark>"; // TODO: better formatting
             }
         }
     }

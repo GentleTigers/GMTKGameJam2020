@@ -13,7 +13,7 @@ public class GameOverScreenController : MonoBehaviour {
     public void ShowGameOver() {
         try {
             gameObject.SetActive(true);
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
         } catch {
 
         }

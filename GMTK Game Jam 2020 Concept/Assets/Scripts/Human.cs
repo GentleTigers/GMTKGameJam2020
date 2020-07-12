@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum HumanStatus {
     Healthy  = 0,
@@ -158,6 +159,9 @@ public class Human : MonoBehaviour {
     /* UPDATE (Movement and Status) */
 
     void Update() {
+        if (Input.GetButtonDown("Cancel")) {
+            SceneManager.LoadScene(ScoreTracker.Instance.mainMenuScene);
+        }
         if (!CorrespondingWorld.StartedPlaying) {
             return;
         }

@@ -376,31 +376,28 @@ PrefabInstance:
 
         your mission today is to infect every inhabitant
         of the island and secure the future of our kind. Once you infected the human,
-        you can use their blood travel system to get to their brain. From there it''ll
-        be easy for you to take over control of all their basic motor functions.
+        you can travel through their arterial network to get to their brain. From
+        there it will be easy for you to take over control of all their basic motor
+        functions
 
 
-        But
-        beware, once infected with you, the humans will not be able to swim. We are
-        a very kind virus. We want the humans to live. So if one of them drowns you
-        will have failed your mission.
 
 '
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 479
+      value: 302
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 94
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 13
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
@@ -410,7 +407,7 @@ PrefabInstance:
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 92
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 6765827460339063704, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
