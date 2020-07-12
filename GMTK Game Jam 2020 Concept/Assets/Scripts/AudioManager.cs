@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour {
         if (e.NewStatus == GameStatus.PLAYING && e.OldStatus == GameStatus.MENU) {
             PlaySound("Waves");
         }
-        if (e.NewStatus != GameStatus.PLAYING && e.NewStatus != GameStatus.GAMEOVER) {
+        if (e.NewStatus != GameStatus.PLAYING && e.NewStatus != GameStatus.GAMEOVER && e.NewStatus != GameStatus.HIGHSCORE) {
             StopSound("Waves");
         }
     }
