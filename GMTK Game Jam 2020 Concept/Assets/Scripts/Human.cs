@@ -18,6 +18,10 @@ public enum InfectionStage {
     // TODO add more stages.
 }
 
+public enum CauseOfDeath {
+    WATER
+}
+
 public class StatusChangedEventArgs : EventArgs {
     public HumanStatus NewStatus { get; }
     public HumanStatus OldStatus { get; }
@@ -147,7 +151,7 @@ public class Human : MonoBehaviour {
     }
 
     private void CollisionHumanLevel(Human human, World water) {
-        human.Die();
+        human.Die(CauseOfDeath.WATER);
     }
 
 
@@ -244,7 +248,10 @@ public class Human : MonoBehaviour {
     /// <summary>
     /// Destroys the game object.
     /// </summary>
-    private void Die() {
+    private void Die(CauseOfDeath causeOfDeath) {
+        if (causeOfDeath == CauseOfDeath.WATER) {
+            AudioManager.instance.PlaySound("WaterSplash");
+        }
         gameObject.SetActive(false);
         Status = HumanStatus.Dead;
     }

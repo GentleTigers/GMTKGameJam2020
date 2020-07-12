@@ -86,7 +86,7 @@ public class ScoreTracker : MonoBehaviour {
     [SerializeField] private Canvas HUD;
     [SerializeField] private Text timerText;
     public float ScoreTimer { get; private set; }
-    public string ScoreTimerAsText { get { return TimeSpan.FromSeconds(ScoreTimer).ToString(@"hh\:mm\:ss\:fff"); } }
+    public string ScoreTimerAsText { get { return TimeSpan.FromSeconds(ScoreTimer).ToString(@"mm\:ss\:fff"); } }
     private bool timerIsRunning = false;
 
 
