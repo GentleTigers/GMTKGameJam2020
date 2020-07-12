@@ -378,21 +378,22 @@ PrefabInstance:
         of the island and secure the future of our kind. Once you infected the human,
         you can travel through their arterial network to get to their brain. From
         there it will be easy for you to take over control of all their basic motor
-        functions
+        functions.
 
 
+        All the best
 
 '
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 302
+      value: 315
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 58
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
@@ -407,7 +408,7 @@ PrefabInstance:
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 55
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 6765827460339063704, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}

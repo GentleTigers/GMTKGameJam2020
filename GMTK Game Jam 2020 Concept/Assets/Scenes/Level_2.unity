@@ -700,7 +700,7 @@ PrefabInstance:
     - target: {fileID: 6765827459711910073, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.41
+      value: 1.89
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910073, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
@@ -730,7 +730,7 @@ PrefabInstance:
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
@@ -747,6 +747,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontStyle
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
+        type: 3}
+      propertyPath: m_margin.z
+      value: 18.370768
       objectReference: {fileID: 0}
     - target: {fileID: 6765827460339063705, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
