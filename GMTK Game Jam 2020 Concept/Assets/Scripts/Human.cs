@@ -172,6 +172,9 @@ public class Human : MonoBehaviour {
                 }
                 break;
             case HumanStatus.Imune:
+                if (imuneToHealthyTimer < 0) {
+                    return; // If the timer is < 0 immune can never become infected again.
+                }
                 imuneToHealthyTimer += Time.deltaTime;
                 if (imuneToHealthyTimer >= CorrespondingWorld.ImuneToHealthyTotalTime) {
                     Status = HumanStatus.Healthy;

@@ -289,6 +289,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: World_1
       objectReference: {fileID: 0}
+    - target: {fileID: 4380429029849658194, guid: f4a0c73602adb422c8fecdde6289f20f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8724535659929126334, guid: f4a0c73602adb422c8fecdde6289f20f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -353,6 +358,60 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1228583516}
     m_Modifications:
+    - target: {fileID: 6765827459711910073, guid: faa229ea54ac747a7be39ec0df984a0d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765827459711910073, guid: faa229ea54ac747a7be39ec0df984a0d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
+        type: 3}
+      propertyPath: m_text
+      value: 'Dear Virus,
+
+
+        your mission today is to infect every inhabitant
+        of the island and secure the future of our kind. Once you infected the human,
+        you can use their blood travel system to get to their brain. From there it''ll
+        be easy for you to take over control of all their basic motor functions.
+
+
+        But
+        beware, once infected with you, the humans will not be able to swim. We are
+        a very kind virus. We want the humans to live. So if one of them drowns you
+        will have failed your mission.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 479
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 94
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 520
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 92
+      objectReference: {fileID: 0}
     - target: {fileID: 6765827460339063704, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_Camera

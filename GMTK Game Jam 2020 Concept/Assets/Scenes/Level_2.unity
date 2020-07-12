@@ -547,7 +547,7 @@ PrefabInstance:
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 62
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
@@ -572,9 +572,14 @@ PrefabInstance:
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
       propertyPath: m_text
-      value: 'Also you controll all of the humans together because [Reason]
+      value: 'Also you controll all of the humans simultaniously because [Reasons]
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6765827460339063705, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
