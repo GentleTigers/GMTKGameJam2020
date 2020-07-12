@@ -104,6 +104,17 @@ public class ScoreTracker : MonoBehaviour {
             return TimeSpan.FromSeconds(ScoreTimer).ToString(@"ss\:ff");
         }
     }
+
+    public static string GetTimeInNiceFormat(float seconds) {
+        if (seconds >= 60) {
+            if (seconds >= 10 * 60) {
+                return TimeSpan.FromSeconds(seconds).ToString(@"hh\:mm\:ss\:ff");
+            }
+            return TimeSpan.FromSeconds(seconds).ToString(@"m\:ss\:ff");
+        }
+        return TimeSpan.FromSeconds(seconds).ToString(@"ss\:ff");
+    }
+
     private bool timerIsRunning = false;
 
 
@@ -130,6 +141,18 @@ public class ScoreTracker : MonoBehaviour {
             Input.GetKeyDown(KeyCode.A) ||
             Input.GetKeyDown(KeyCode.S) ||
             Input.GetKeyDown(KeyCode.D);
+    }
+
+
+    /* HIGHSCORE */
+
+    public float Higscore {
+        get {
+            return PlayerPrefs.GetFloat("Highscore", -1);
+        }
+        set {
+            PlayerPrefs.SetFloat("Highscore", value);
+        }
     }
 
 

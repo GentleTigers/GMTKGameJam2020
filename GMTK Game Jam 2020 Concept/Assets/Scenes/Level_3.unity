@@ -182,7 +182,7 @@ PrefabInstance:
 
 
         They
-        have countless of our kind on ther conscience.
+        have countless of our kind on their conscience.
 
 
         Do not touch them!
@@ -192,8 +192,8 @@ PrefabInstance:
 
 
         After
-        Doctors killed all uf us in a Human, their body will become hostile and we
-        can''t live in there anymore.'
+        Doctors killed all of us in a Human, their body will become hostile and we
+        can''t live in them anymore.'
       objectReference: {fileID: 0}
     - target: {fileID: 6765827459711910078, guid: faa229ea54ac747a7be39ec0df984a0d,
         type: 3}
