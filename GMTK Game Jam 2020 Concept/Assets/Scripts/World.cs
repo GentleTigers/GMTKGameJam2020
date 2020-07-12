@@ -47,6 +47,11 @@ public class World : MonoBehaviour {
         }
     }
 
+    private void Update() {
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.I) && Input.GetKeyDown(KeyCode.N)) { // CHEATCODE
+            DoLevelWin();
+        }
+    }
 
 
     private void OnStatusChanged(object sender, StatusChangedEventArgs e) {
@@ -61,12 +66,14 @@ public class World : MonoBehaviour {
         if (CheckForGameOver()) {
             ScoreTracker.Instance.GameStatus = GameStatus.GAMEOVER;
         } else if (CheckForLevelWin()) {
-            LoadNextLevel();
-            Debug.Log("LEVEL WON!");
+            DoLevelWin();
         }
     }
 
-    
+    private void DoLevelWin() {
+        LoadNextLevel();
+        Debug.Log("LEVEL WON!");
+    }
 
     private bool CheckForLevelWin() {
         int infected = 0;
