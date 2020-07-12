@@ -57,13 +57,16 @@ public class World : MonoBehaviour {
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.I) && Input.GetKeyDown(KeyCode.N)) { // CHEATCODE
             DoLevelWin();
         }
-        if (!StartedPlaying) {
-            if (Time.timeSinceLevelLoad > ScoreTracker.Instance.DelayedStartPerLevel && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)) {
-                StartedPlaying = true;
-                Debug.Log("StartedPlaying");
+        try {
+            if (!StartedPlaying) {
+                if (Time.timeSinceLevelLoad > ScoreTracker.Instance.DelayedStartPerLevel && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)) {
+                    StartedPlaying = true;
+                    Debug.Log("StartedPlaying");
+                }
             }
-        }
-        
+        } catch {
+            StartedPlaying = true;
+        }        
     }
 
 
