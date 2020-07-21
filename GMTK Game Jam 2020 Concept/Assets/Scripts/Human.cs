@@ -101,10 +101,12 @@ public class Human : MonoBehaviour {
     public event EventHandler<StageChangedEventArgs> StageChanged;
 
     protected virtual void OnStatusChanged(HumanStatus oldStatus, HumanStatus newStatus) {
+        SetCorrectAnimation();
         StatusChanged?.Invoke(this, new StatusChangedEventArgs(oldStatus, newStatus));
     }
 
     protected virtual void OnStageChanged(InfectionStage oldStage, InfectionStage newStage) {
+        SetCorrectAnimation();
         StageChanged?.Invoke(this, new StageChangedEventArgs(oldStage, newStage));
     }
 
@@ -112,9 +114,7 @@ public class Human : MonoBehaviour {
 
     void Start() {
         lastMovement = new Vector3(startDirection.x, startDirection.y);
-        SetCorrectAnimation(this, EventArgs.Empty);
-        StatusChanged += SetCorrectAnimation;
-        StageChanged += SetCorrectAnimation;
+        SetCorrectAnimation();
     }
 
     /* COLLISIONS */
@@ -189,7 +189,7 @@ public class Human : MonoBehaviour {
                     return; // If the timer is < 0 immune can never become infected again.
                 }
                 imuneToHealthyTimer += Time.deltaTime;
-                if (imuneToHealthyTimer >= CorrespondingWorld.ImuneToHealthyTotalTime) {
+                if (imuneToHealthyTimer >= CorrespondingWorld.ImuneToHealthyTotalTime && CorrespondingWorld.ImuneToHealthyTotalTime >= 0) {
                     Status = HumanStatus.Healthy;
                     imuneToHealthyTimer = 0;
                 }
@@ -266,7 +266,7 @@ public class Human : MonoBehaviour {
         Animator.SetFloat("Speed", movement.magnitude);
     }
 
-    private void SetCorrectAnimation(object sender, EventArgs e) {
+    private void SetCorrectAnimation() {
         Animator.SetInteger("InfectionStatus", (int)Status);
         Animator.SetInteger("InfectionStage", (int)Stage);
 
