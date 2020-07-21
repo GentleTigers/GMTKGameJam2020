@@ -178,6 +178,9 @@ public class ScoreTracker : MonoBehaviour {
     }
 
     void Update() {
+        if (Input.GetButtonDown("Cancel")) {
+            SceneManager.LoadScene(ScoreTracker.Instance.mainMenuScene);
+        }
         if (timerIsRunning) {
             ScoreTimer += Time.deltaTime;
             timerText.text = "<mark=#a1a1a1aa>Time: " + ScoreTimerAsText + "</mark>"; // TODO: better formatting

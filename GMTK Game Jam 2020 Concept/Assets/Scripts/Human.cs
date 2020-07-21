@@ -48,6 +48,8 @@ public class StageChangedEventArgs : EventArgs {
 
 public class Human : MonoBehaviour {
 
+    [SerializeField] private WaypointCollection waypointCollection;
+
     private float speed = 2.5f;
     private Vector3 movement;
     private Vector3 lastMovement = new Vector3();
@@ -159,9 +161,7 @@ public class Human : MonoBehaviour {
     /* UPDATE (Movement and Status) */
 
     void Update() {
-        if (Input.GetButtonDown("Cancel")) {
-            SceneManager.LoadScene(ScoreTracker.Instance.mainMenuScene);
-        }
+        
         if (!CorrespondingWorld.StartedPlaying) {
             return;
         }
@@ -194,9 +194,20 @@ public class Human : MonoBehaviour {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
             movement.Normalize();
+        } else if (status != HumanStatus.Infected && waypointCollection != null) {
+            GameObject currentWaypoint = waypointCollection.getCurrentWaypoint();
+            Vector2 waypointPos = currentWaypoint.transform.position;
+            Vector2 humanPos = gameObject.transform.position;
+            double distance = Math.Sqrt(Math.Pow(Math.Abs(waypointPos.x - humanPos.x), 2) + Math.Pow(Math.Abs(waypointPos.y - humanPos.y), 2));
+            if (distance < WaypointCollection.WAYPOINT_RADIUS) {
+                currentWaypoint = waypointCollection.getNextWaypoint();
+                waypointPos = currentWaypoint.transform.position;
+            }
+            movement = waypointPos - humanPos;
+            Debug.Log("Movement: " + movement);
+            movement.Normalize();
         } else {
-            movement.x = 0;
-            movement.y = 0;
+            movement.Set(0, 0, 0);
         }
     }
 
