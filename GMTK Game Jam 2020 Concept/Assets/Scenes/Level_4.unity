@@ -607,6 +607,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff86d5618b644ed1b838d4d450a578d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 0
+  waitDirection: {x: 0, y: 0}
+  useWaitDirection: 0
+  active: 1
 --- !u!1001 &1207504842
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -49,9 +49,14 @@ public class StageChangedEventArgs : EventArgs {
 public class Human : MonoBehaviour {
 
     [SerializeField] private WaypointCollection waypointCollection;
+    private float currentWaitTime;
+    private bool isWaiting;
 
     private float speed = 2.5f;
     private Vector3 movement;
+    /// <summary>
+    /// Used for turning the sprite in the correct direction if it is idle.
+    /// </summary>
     private Vector3 lastMovement = new Vector3();
     [SerializeField] Vector2Int startDirection;
     [SerializeField] private Animator animator;
@@ -163,8 +168,12 @@ public class Human : MonoBehaviour {
     void Update() {
         
         if (!CorrespondingWorld.StartedPlaying) {
+            if (Stage != InfectionStage.Infectious) {
+                HandleMovementInput();
+            }
             return;
         }
+
         HandleMovementInput();
 
         switch (status) {
@@ -194,21 +203,47 @@ public class Human : MonoBehaviour {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
             movement.Normalize();
-        } else if (status != HumanStatus.Infected && waypointCollection != null) {
-            GameObject currentWaypoint = waypointCollection.getCurrentWaypoint();
-            Vector2 waypointPos = currentWaypoint.transform.position;
+
+        } else if (status != HumanStatus.Infected && waypointCollection != null && waypointCollection.LoopEnded == false) {
+            if (currentWaitTime > 0) {
+                movement.Set(0, 0, 0);
+                currentWaitTime -= Time.deltaTime;
+                return;
+            }
+            GameObject currentWaypointObject = waypointCollection.getCurrentWaypointObject();
+            Vector2 waypointPos = currentWaypointObject.transform.position;
             Vector2 humanPos = gameObject.transform.position;
             double distance = Math.Sqrt(Math.Pow(Math.Abs(waypointPos.x - humanPos.x), 2) + Math.Pow(Math.Abs(waypointPos.y - humanPos.y), 2));
             if (distance < WaypointCollection.WAYPOINT_RADIUS) {
-                currentWaypoint = waypointCollection.getNextWaypoint();
-                waypointPos = currentWaypoint.transform.position;
+                Waypoint currentWaypoint = waypointCollection.getCurrentWaypoint();
+                if (currentWaypoint.WaitTime > 0 && isWaiting == false) {
+                    currentWaitTime = currentWaypoint.WaitTime;
+                    if (currentWaypoint.UseWaitDirection) {
+                        lastMovement = currentWaypoint.WaitDirection;
+                    }
+                    movement.Set(0, 0, 0);
+                    isWaiting = true;
+                    return;
+                }
+                isWaiting = false;
+                currentWaypointObject = waypointCollection.GetNextWaypoint();
+                if (currentWaypointObject == null) {
+                    LoopHasEnded();
+                    return;
+                }
+                waypointPos = currentWaypointObject.transform.position;
             }
             movement = waypointPos - humanPos;
-            Debug.Log("Movement: " + movement);
             movement.Normalize();
+
         } else {
             movement.Set(0, 0, 0);
         }
+    }
+
+    private void LoopHasEnded() {
+        lastMovement = waypointCollection.EndLookDirection;
+        movement.Set(0, 0, 0);
     }
 
     private void FixedUpdate() {
@@ -219,6 +254,9 @@ public class Human : MonoBehaviour {
     private void HandleMovement() {
         bool idle = movement.x == 0 && movement.y == 0;
         if (idle) {
+            if (isWaiting && waypointCollection.getCurrentWaypoint().UseWaitDirection) {
+                transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(lastMovement.y, lastMovement.x) * Mathf.Rad2Deg - 90);
+            }
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(lastMovement.y, lastMovement.x) * Mathf.Rad2Deg - 90);
         } else {
             transform.position += movement * speed * Time.fixedDeltaTime;

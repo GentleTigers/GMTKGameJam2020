@@ -43,6 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff86d5618b644ed1b838d4d450a578d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 0
+  waitDirection: {x: 0, y: 0}
+  useWaitDirection: 1
+  active: 1
 --- !u!1 &6471443190709959808
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,3 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eed9968f150d4693a93d08eaff32f83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endLookDirection: {x: 0, y: 0}
+  useEndLookDirection: 0
+  loop: 1
