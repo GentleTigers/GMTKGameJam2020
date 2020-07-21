@@ -323,7 +323,11 @@ public class Human : MonoBehaviour {
     /// </summary>
     private void Die(CauseOfDeath causeOfDeath) {
         if (causeOfDeath == CauseOfDeath.WATER) {
-            AudioManager.instance.PlaySound("WaterSplash");
+            try {
+                AudioManager.instance.PlaySound("WaterSplash");
+            } catch {
+                Debug.Log("Splash");
+            }
         }
         gameObject.SetActive(false);
         Status = HumanStatus.Dead;
